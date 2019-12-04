@@ -1,5 +1,6 @@
 ﻿using System;
-using SW;
+using CORE;
+
 
 namespace ConsoleApp
 {
@@ -7,8 +8,8 @@ namespace ConsoleApp
     {
         public static void Main(string[] args)
         {
-            SwTools swTools = new SwTools();
-            Console.Write(swTools.swConnect());
+            Core core = new Core();
+            core.swInit();
             Console.ReadLine();
         }
     }
