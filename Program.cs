@@ -10,6 +10,7 @@ namespace ConsoleApp
         {
             Core core = new Core();
             core.swInit();
+            Console.WriteLine("FINISH");
             Console.ReadLine();
         }
     }

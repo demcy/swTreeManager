@@ -1,16 +1,22 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10ce7336-ff90-4142-9488-e15b04da5a43" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsoleApp.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Properties/AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SW TreeManager.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CORE/CORE.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CORE/Core.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CORE/Properties/AssemblyInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Domain/Comands.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Domain/Domain.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Domain/Properties/AssemblyInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SW TreeManager.sln.DotSettings.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SW/SwComps.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsoleApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleApp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SW TreeManager.sln" beforeDir="false" afterPath="$PROJECT_DIR$/SW TreeManager.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SW/SW.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SW/SW.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SW/SwTools.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SW/SwTools.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,25 +29,45 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/SW/SwTools.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SW/SwComps.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CORE/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CORE/Core.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SW/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Domain/Comands.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/SW/Class1.cs" />
-        <option value="$PROJECT_DIR$/SW/SwTools.cs" />
+        <option value="$PROJECT_DIR$/CORE/Class1.cs" />
+        <option value="$PROJECT_DIR$/Domain/Class1.cs" />
+        <option value="$PROJECT_DIR$/Domain/Comands.cs" />
+        <option value="$PROJECT_DIR$/CORE/Instructions.cs" />
+        <option value="$PROJECT_DIR$/SW/SW.csproj" />
         <option value="$PROJECT_DIR$/Program.cs" />
+        <option value="$PROJECT_DIR$/SW/swComp.cs" />
+        <option value="$PROJECT_DIR$/SW/SwCompdsds.cs" />
+        <option value="$PROJECT_DIR$/SW/SwComps.cs" />
+        <option value="$PROJECT_DIR$/SW/SwTools.cs" />
+        <option value="$PROJECT_DIR$/CORE/Core.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="1UQelgxsXwfe3gUNThsXy6WaJIR" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -85,28 +111,46 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575293398893</updated>
-      <workItem from="1575293401550" duration="788000" />
+      <workItem from="1575293401550" duration="1181000" />
+      <workItem from="1575359286290" duration="583000" />
+      <workItem from="1575359935638" duration="158000" />
+      <workItem from="1575360140504" duration="15208000" />
+      <workItem from="1575389899568" duration="34037000" />
+      <workItem from="1575899810430" duration="15540000" />
     </task>
+    <task id="LOCAL-00001" summary="first commit">
+      <created>1575294691887</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1575294691887</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
+    <MESSAGE value="first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\Aleksandr Hohlatsov\.Rider2019.2\system\extResources" t="IncludeRecursive" />
@@ -6,6 +6,24 @@
     <e p="S:\Programs\Macros\SW TreeManager\SW TreeManager" t="IncludeRecursive">
       <e p="bin" t="ExcludeRecursive" />
       <e p="ConsoleApp.csproj" t="IncludeRecursive" />
+      <e p="CORE" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Core.cs" t="Include" />
+        <e p="CORE.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Domain" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Comands.cs" t="Include" />
+        <e p="Domain.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+      </e>
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
       <e p="Program.cs" t="Include" />
@@ -19,6 +37,7 @@
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
         <e p="SW.csproj" t="IncludeRecursive" />
+        <e p="SwComps.cs" t="Include" />
         <e p="SwTools.cs" t="Include" />
       </e>
       <e p="SW TreeManager.sln" t="IncludeFlat" />

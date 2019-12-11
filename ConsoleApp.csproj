@@ -42,6 +42,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="CORE\CORE.csproj">
+      <Project>{9a30108b-b5a7-4610-bb58-e87eca8a0b36}</Project>
+      <Name>CORE</Name>
+    </ProjectReference>
     <ProjectReference Include="SW\SW.csproj">
       <Project>{95355aa0-9f6d-4801-b61c-2830361d17ec}</Project>
       <Name>SW</Name>
