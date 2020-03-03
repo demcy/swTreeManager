@@ -9,7 +9,7 @@ namespace ConsoleApp
         public static void Main(string[] args)
         {
             Core core = new Core();
-            core.swInit();
+            core.SwInit();
             Console.WriteLine("FINISH");
             Console.ReadLine();
         }

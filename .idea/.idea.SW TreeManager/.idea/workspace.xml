@@ -2,13 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10ce7336-ff90-4142-9488-e15b04da5a43" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/XL/Properties/AssemblyInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/XL/XL.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/XL/Xl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CORE/CORE.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CORE/CORE.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CORE/Core.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CORE/Core.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleApp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Comands.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Comands.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Domain.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SW/SW.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SW/SW.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SW TreeManager.sln" beforeDir="false" afterPath="$PROJECT_DIR$/SW TreeManager.sln" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SW/SwComps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SW/SwComps.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SW/SwTools.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SW/SwTools.cs" afterDir="false" />
     </list>
@@ -28,6 +30,8 @@
     <setting file="file://$PROJECT_DIR$/CORE/Core.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ASUS WebStorage/PPAP/PPAP/Form1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/XL/Xl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SW/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Comands.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -40,12 +44,16 @@
         <option value="$PROJECT_DIR$/Domain/Comands.cs" />
         <option value="$PROJECT_DIR$/CORE/Instructions.cs" />
         <option value="$PROJECT_DIR$/SW/SW.csproj" />
-        <option value="$PROJECT_DIR$/Program.cs" />
         <option value="$PROJECT_DIR$/SW/swComp.cs" />
         <option value="$PROJECT_DIR$/SW/SwCompdsds.cs" />
-        <option value="$PROJECT_DIR$/SW/SwComps.cs" />
-        <option value="$PROJECT_DIR$/SW/SwTools.cs" />
+        <option value="$PROJECT_DIR$/Excel/Class1.cs" />
+        <option value="$PROJECT_DIR$/XL/Class1.cs" />
+        <option value="$PROJECT_DIR$/XL/XL.cs" />
+        <option value="$PROJECT_DIR$/XL/Xl.cs" />
+        <option value="$PROJECT_DIR$/Program.cs" />
         <option value="$PROJECT_DIR$/CORE/Core.cs" />
+        <option value="$PROJECT_DIR$/SW/SwTools.cs" />
+        <option value="$PROJECT_DIR$/SW/SwComps.cs" />
       </list>
     </option>
   </component>
@@ -53,12 +61,19 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TWShift.4" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -110,7 +125,12 @@
       <workItem from="1575359935638" duration="158000" />
       <workItem from="1575360140504" duration="15208000" />
       <workItem from="1575389899568" duration="34037000" />
-      <workItem from="1575899810430" duration="19118000" />
+      <workItem from="1575899810430" duration="19713000" />
+      <workItem from="1583137120535" duration="1302000" />
+      <workItem from="1583139246070" duration="12735000" />
+      <workItem from="1583226096409" duration="27000" />
+      <workItem from="1583226236449" duration="7212000" />
+      <workItem from="1583236725032" duration="9889000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1575294691887</created>
@@ -126,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576057356425</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="seond point material is ready">
+      <created>1576062622148</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1576062622148</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,10 +176,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
     <MESSAGE value="first commit" />
     <MESSAGE value="Start point to develop" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start point to develop" />
+    <MESSAGE value="seond point material is ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="seond point material is ready" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -9,12 +9,10 @@ namespace SW
     {
         private SldWorks.SldWorks _swApp;
         private SldWorks.AssemblyDoc _swAss;
-
         private SldWorks.ModelDoc2 _swModel;
 
         public string assAdrs;
-
-        //public List<SldWorks.Component2> Comps = new List<SldWorks.Component2>();
+        
         public List<SwComps> Comps = new List<SwComps>();
 
         public bool SwConnect()
@@ -31,14 +29,12 @@ namespace SW
                 return false;
             }
         }
-
         public bool SwOpenFile()
         {
             _swAss = (SldWorks.AssemblyDoc) _swApp.ActiveDoc;
             _swAss.ResolveAllLightweight();
             return _swAss != null;
         }
-
         public void SwRead()
         {
             adrs();
@@ -46,18 +42,38 @@ namespace SW
             foreach (var objComponent in objComponents)
             {
                 SwComps comp = new SwComps((SldWorks.Component2) objComponent);
-                //SldWorks.Component2 tempComponent = (SldWorks.Component2) objComponent;
-                //SldWorks.ModelDoc2 swm = (SldWorks.ModelDoc2) tempComponent.GetModelDoc2();
-                Comps.Add(comp);
+                if (comp.isToolbox == 0)
+                {
+                    Comps.Add(comp);
+                }
             }
         }
 
-        public void SwRebuildSave()
+        public void SwWrite(SwComps comp, string changedText, int colN, out bool result)
         {
+            result = true;
+            SldWorks.ModelDoc2 swModel = (SldWorks.ModelDoc2) comp.Comp.GetModelDoc2();
+            SldWorks.PartDoc swPart = (SldWorks.PartDoc) comp.Comp.GetModelDoc2();
+            string Database = "S:/Solidworks Settings/Materials/FD2P Other Materials.sldmat";
+            if (colN == 2)
+            {
+                swModel.CustomInfo2[comp.ConfName, "Description"]=changedText;
+            }
+            if (colN == 3)
+            {
+                swModel.CustomInfo2[comp.ConfName, "Company No"]=changedText;
+            }
+            if (colN == 4)
+            {
+                swPart.SetMaterialPropertyName2(comp.ConfName, Database, changedText);
+                string m = swPart.GetMaterialPropertyName2(comp.ConfName, out Database);
+                if (m != changedText)
+                {
+                    result = false;
+                }
+            }
             _swAss.ForceRebuild2(true);
         }
-
-
         public void adrs()
         {
             _swModel = (SldWorks.ModelDoc2) _swApp.ActiveDoc;
