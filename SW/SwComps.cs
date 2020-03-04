@@ -17,17 +17,17 @@ namespace SW
         
         public SwComps(SldWorks.Component2 comp)
         {
-            string outDatabase;
             try
             {
                 Comp = comp;
                 swModel = (SldWorks.ModelDoc2) comp.GetModelDoc2();
                 swPart = (SldWorks.PartDoc) comp.GetModelDoc2();
-                Name = comp.Name;
+                Name = NameCorrection(comp.Name);
                 swConf = (SldWorks.Configuration) swModel.GetActiveConfiguration();
                 ConfName = swConf.Name;
                 Description = swModel.CustomInfo2[swConf.Name, "Description"];
                 CompanyNo = swModel.CustomInfo2[swConf.Name, "Company No"];
+                string outDatabase;
                 Material = swPart.GetMaterialPropertyName2(swConf.Name, out outDatabase);
                 isToolbox = swModel.Extension.ToolboxPartType;
                 if (comp.IsHidden(true))
@@ -39,6 +39,10 @@ namespace SW
             {
                 isToolbox = 3;
             }
+        }
+        private string NameCorrection(string n)
+        {
+            return n.Substring(0, n.LastIndexOf("-", StringComparison.Ordinal));
         }
     }
 }

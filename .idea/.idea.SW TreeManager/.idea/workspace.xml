@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10ce7336-ff90-4142-9488-e15b04da5a43" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/XL/Properties/AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/XL/XL.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/XL/Xl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CORE/CORE.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CORE/CORE.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CORE/Core.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CORE/Core.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SW TreeManager.sln" beforeDir="false" afterPath="$PROJECT_DIR$/SW TreeManager.sln" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SW/SwComps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SW/SwComps.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SW/SwTools.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SW/SwTools.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/XL/Xl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/XL/Xl.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,11 +42,11 @@
         <option value="$PROJECT_DIR$/Excel/Class1.cs" />
         <option value="$PROJECT_DIR$/XL/Class1.cs" />
         <option value="$PROJECT_DIR$/XL/XL.cs" />
-        <option value="$PROJECT_DIR$/XL/Xl.cs" />
         <option value="$PROJECT_DIR$/Program.cs" />
         <option value="$PROJECT_DIR$/CORE/Core.cs" />
-        <option value="$PROJECT_DIR$/SW/SwTools.cs" />
+        <option value="$PROJECT_DIR$/XL/Xl.cs" />
         <option value="$PROJECT_DIR$/SW/SwComps.cs" />
+        <option value="$PROJECT_DIR$/SW/SwTools.cs" />
       </list>
     </option>
   </component>
@@ -130,7 +123,8 @@
       <workItem from="1583139246070" duration="12735000" />
       <workItem from="1583226096409" duration="27000" />
       <workItem from="1583226236449" duration="7212000" />
-      <workItem from="1583236725032" duration="9889000" />
+      <workItem from="1583236725032" duration="9926000" />
+      <workItem from="1583253127199" duration="16861000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1575294691887</created>
@@ -153,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576062622148</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="step 2">
+      <created>1583246949945</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1583246949945</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,7 +180,8 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="Start point to develop" />
     <MESSAGE value="seond point material is ready" />
-    <option name="LAST_COMMIT_MESSAGE" value="seond point material is ready" />
+    <MESSAGE value="step 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="step 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

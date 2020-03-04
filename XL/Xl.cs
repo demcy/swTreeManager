@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
 using SW;
@@ -14,6 +16,7 @@ namespace XL
         private Excel.Worksheet _xlSheet;
 
         private SwTools _swTools;
+        private List<SwComps> orderedComps;
         public void OpenExcel(SwTools swTools)
         {
             _swTools = swTools;
@@ -30,7 +33,10 @@ namespace XL
             _xlSheet.Range[_xlSheet.Cells[1, 1], _xlSheet.Cells[1, 4]].Cells.Font.Bold = true;
             
             int i = 2;
-            foreach (var comp in swTools.Comps)
+            orderedComps = swTools.Comps.GroupBy(item => item.Name)
+                .Select(item => item.FirstOrDefault())
+                .OrderBy(item => item.Name).ToList();
+            foreach (var comp in orderedComps)
             {
                 _xlSheet.Cells[i, 1].Value = comp.Name;
                 _xlSheet.Cells[i, 2].Value = comp.Description;
@@ -52,7 +58,7 @@ namespace XL
             foreach (Range v in target.Rows)
             {
                 bool result = true;
-                var comp = _swTools.Comps[v.Row-2];
+                var comp = orderedComps[v.Row-2];
                 _swTools.SwWrite(comp, v.Text, target.Column, out result);
                 if (!result)
                 {
