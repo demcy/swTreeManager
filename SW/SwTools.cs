@@ -13,11 +13,15 @@ namespace SW
 
         //public string assAdrs;
         
-        public List<SwComps> Comps = new List<SwComps>();
+        //public List<SwComps> Comps = new List<SwComps>();
         public List<Component2> AssList = new List<Component2>();
+        //Tuple<int,string> header = new Tuple<int, string>();
+        public Dictionary<Tuple<int,string>, List<SwComps>> MainAss = new Dictionary<Tuple<int,string>, List<SwComps>>();
         
         string Database = "S:/Solidworks Settings/Materials/FD2P Other Materials.sldmat";
         string BuilderTemplate = "S:/Solidworks Settings/Templates/FD2P/FD2P Custom Properties/FD2P Custom Properties Part.prtprp";
+
+        //private int level = 0;
 
         public bool SwConnect()
         {
@@ -39,39 +43,36 @@ namespace SW
             _swAss.ResolveAllLightweight();
             return _swAss != null;
         }
-        public void SwRead()
+        public void SwRead(int l)
         {
-            //adrs();
+            int level = l;
+            List<SwComps> Comps = new List<SwComps>();
             object[] objComponents = (object[]) _swAss.GetComponents(true);
-            Console.WriteLine(objComponents.Length);
             foreach (var objComponent in objComponents)
             {
-                /*Component2 c = (Component2)objComponent;
+                Component2 c = (Component2)objComponent;
                 _swModel = (SldWorks.ModelDoc2) c.GetModelDoc2();
-                if(_swModel.GetType()==1)
-                {*/
+                int isToolbox = _swModel.Extension.ToolboxPartType;
+                if (isToolbox == 0)
+                {
+                    if (_swModel.GetType() == 2)
+                    {
+                        _swAss = (SldWorks.AssemblyDoc)_swApp.ActivateDoc(c.GetPathName());
+                        SwRead(level + 1);
+                        _swApp.CloseDoc(c.GetPathName());
+                    }
                     SwComps comp = new SwComps((SldWorks.Component2) objComponent);
                     if (comp.isToolbox == 0)
                     {
                         Comps.Add(comp);
                     }
-                    /*}
-                    else
-                    {
-                        AssList.Add(c);
-                    }*/
-            }
-            /*if (AssList.Count > 0)
-            {
-                foreach (var ass in AssList)
-                {
-                    SwTools swTools = new SwTools();
-                    swTools._swAss = (SldWorks.AssemblyDoc) _swApp.ActivateDoc(ass.GetPathName());
-                    Console.WriteLine(ass.Name);
-                    swTools.SwRead();
-                    _swApp.CloseDoc(ass.GetPathName());
                 }
-            }*/
+            }
+            _swModel = (SldWorks.ModelDoc2) _swApp.ActiveDoc;
+            Tuple<int,string> header = new Tuple<int, string>(level, _swModel.GetTitle());
+            MainAss.Add(header, Comps);
+            //Console.WriteLine(_swModel.GetTitle());
+            
         }
 
         public void SwWrite(SwComps comp, string changedText, int colN, out bool result)
