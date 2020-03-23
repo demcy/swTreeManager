@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
@@ -17,7 +18,7 @@ namespace XL
 
         private SwTools _swTools;
         private List<SwComps> orderedComps;
-        private Dictionary<Tuple<int, string>, List<SwComps>> orderedDic;
+        private Dictionary<Tuple<double, string>, List<SwComps>> orderedDic;
         public void OpenExcel(SwTools swTools)
         {
             _swTools = swTools;
@@ -35,13 +36,29 @@ namespace XL
             _xlSheet.Range[_xlSheet.Cells[1, 1], _xlSheet.Cells[1, 5]].Cells.Font.Bold = true;
             
             int i = 2;
+            double p = 1;
+            string lastP;
             orderedDic = swTools.MainAss.OrderBy(item => item.Key.Item1)
+                //.ThenBy(item => item.Key.Item2)
                 .ToDictionary(t => t.Key, v => v.Value);
             foreach (var dicItem in orderedDic)
             {
+                lastP = p.ToString() + ".";
                 _xlSheet.Cells[i, 1].Value = dicItem.Key.Item1;
                 _xlSheet.Cells[i, 2].Value = dicItem.Key.Item2;
                 i++;
+                orderedComps = dicItem.Value.GroupBy(item => item.Name)
+                    .Select(item => item.FirstOrDefault())
+                    .OrderBy(item => item.Name).ToList();
+                foreach (var comp in orderedComps)
+                {
+                    _xlSheet.Cells[i, 1].Value = lastP + p.ToString();
+                    _xlSheet.Cells[i, 2].Value = comp.Name;
+                    _xlSheet.Cells[i, 3].Value = comp.Description;
+                    _xlSheet.Cells[i, 4].Value = comp.CompanyNo;
+                    _xlSheet.Cells[i, 5].Value = comp.Material;
+                    i++;
+                }
             }
             /*orderedComps = swTools.Comps.GroupBy(item => item.Name)
                 .Select(item => item.FirstOrDefault())

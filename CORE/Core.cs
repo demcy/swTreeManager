@@ -14,7 +14,7 @@ namespace CORE
             {
                 Console.WriteLine("READING DATA...");
                 Console.WriteLine("IT TAKES SOME TIME...");
-                swTools.SwRead(1);
+                swTools.SwRead(1, 0, 10);
                 xl.OpenExcel(swTools);
             }
             else

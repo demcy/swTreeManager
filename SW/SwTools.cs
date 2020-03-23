@@ -10,18 +10,12 @@ namespace SW
         private SldWorks.SldWorks _swApp;
         private SldWorks.AssemblyDoc _swAss;
         private SldWorks.ModelDoc2 _swModel;
-
-        //public string assAdrs;
         
-        //public List<SwComps> Comps = new List<SwComps>();
         public List<Component2> AssList = new List<Component2>();
-        //Tuple<int,string> header = new Tuple<int, string>();
-        public Dictionary<Tuple<int,string>, List<SwComps>> MainAss = new Dictionary<Tuple<int,string>, List<SwComps>>();
+        public Dictionary<Tuple<double,string>, List<SwComps>> MainAss = new Dictionary<Tuple<double,string>, List<SwComps>>();
         
         string Database = "S:/Solidworks Settings/Materials/FD2P Other Materials.sldmat";
         string BuilderTemplate = "S:/Solidworks Settings/Templates/FD2P/FD2P Custom Properties/FD2P Custom Properties Part.prtprp";
-
-        //private int level = 0;
 
         public bool SwConnect()
         {
@@ -43,9 +37,9 @@ namespace SW
             _swAss.ResolveAllLightweight();
             return _swAss != null;
         }
-        public void SwRead(int l)
+        public void SwRead(double l, double p, double d)
         {
-            int level = l;
+            double level = l;
             List<SwComps> Comps = new List<SwComps>();
             object[] objComponents = (object[]) _swAss.GetComponents(true);
             foreach (var objComponent in objComponents)
@@ -57,8 +51,9 @@ namespace SW
                 {
                     if (_swModel.GetType() == 2)
                     {
+                        p++;
                         _swAss = (SldWorks.AssemblyDoc)_swApp.ActivateDoc(c.GetPathName());
-                        SwRead(level + 1);
+                        SwRead(level + p/d, 0,d*10);
                         _swApp.CloseDoc(c.GetPathName());
                     }
                     SwComps comp = new SwComps((SldWorks.Component2) objComponent);
@@ -69,10 +64,8 @@ namespace SW
                 }
             }
             _swModel = (SldWorks.ModelDoc2) _swApp.ActiveDoc;
-            Tuple<int,string> header = new Tuple<int, string>(level, _swModel.GetTitle());
+            Tuple<double,string> header = new Tuple<double, string>(level, _swModel.GetTitle());
             MainAss.Add(header, Comps);
-            //Console.WriteLine(_swModel.GetTitle());
-            
         }
 
         public void SwWrite(SwComps comp, string changedText, int colN, out bool result)
@@ -106,18 +99,9 @@ namespace SW
             }
             _swAss.ForceRebuild2(true);
         }
-        public void adrs()
-        {
-            _swModel = (SldWorks.ModelDoc2) _swApp.ActiveDoc;
-            string a = _swModel.GetPathName();
-            //assAdrs = a.Substring(0, a.LastIndexOf("\\"));
-            //Console.WriteLine(assAdrs);
-        }
+        
 
-        /*public string restAdr(string p)
-        {
-            return p.Substring(assAdrs.Length + 1, p.Length - assAdrs.Length - 1);
-        }*/
+        
     }
 }
 //private static SldWorks.ModelDoc2 _swModel;
