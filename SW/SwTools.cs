@@ -46,7 +46,15 @@ namespace SW
             {
                 Component2 c = (Component2)objComponent;
                 _swModel = (SldWorks.ModelDoc2) c.GetModelDoc2();
-                int isToolbox = _swModel.Extension.ToolboxPartType;
+                int isToolbox;
+                if (!c.IsSuppressed())
+                {
+                    isToolbox = _swModel.Extension.ToolboxPartType;
+                }
+                else
+                {
+                    isToolbox = 3;
+                }
                 if (isToolbox == 0)
                 {
                     if (_swModel.GetType() == 2)
@@ -68,9 +76,9 @@ namespace SW
             MainAss.Add(header, Comps);
         }
 
-        public void SwWrite(SwComps comp, string changedText, int colN, out bool result)
+        public void SwWrite(SwComps comp, string changedText, int colN)//, out bool result)
         {
-            result = true;
+            //result = true;
             SldWorks.ModelDoc2 swModel = (SldWorks.ModelDoc2) comp.Comp.GetModelDoc2();
             SldWorks.PartDoc swPart = (SldWorks.PartDoc) comp.Comp.GetModelDoc2();
             
@@ -80,22 +88,22 @@ namespace SW
                 swModel.AddCustomInfo3(comp.ConfName, "Description", 0, "");
                 swModel.AddCustomInfo3(comp.ConfName, "Company No", 0, "");
             }
-            if (colN == 2)
+            if (colN == 3)
             {
                 swModel.CustomInfo2[comp.ConfName, "Description"]=changedText;
             }
-            if (colN == 3)
+            if (colN == 4)
             {
                 swModel.CustomInfo2[comp.ConfName, "Company No"]=changedText;
             }
-            if (colN == 4)
+            if (colN == 5)
             {
                 swPart.SetMaterialPropertyName2(comp.ConfName, Database, changedText);
-                string m = swPart.GetMaterialPropertyName2(comp.ConfName, out Database);
+                /*string m = swPart.GetMaterialPropertyName2(comp.ConfName, out Database);
                 if (m != changedText)
                 {
                     result = false;
-                }
+                }*/
             }
             _swAss.ForceRebuild2(true);
         }
