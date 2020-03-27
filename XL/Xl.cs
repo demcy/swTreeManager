@@ -120,48 +120,37 @@ namespace XL
             foreach (Range v in target.Rows)
             {
                 string xlName = _xlSheet.Cells[v.Row, 2].Text;
-                Console.WriteLine(xlName);
-                var comp = orderedDic.FirstOrDefault(d=>d.Value
-                        .Any(item=>item.Name==xlName)).Value
-                    .FirstOrDefault(item=>item.Name==xlName);
-                //var comp = orderedComps[v.Row-2];
-                _swTools.SwWrite(comp, v.Text, target.Column);
-                
+                bool ifassy = orderedDic.Any(d => d.Value
+                    .Any(item => item.Name == xlName));
+                if (ifassy)
+                {
+                    var comp = orderedDic.FirstOrDefault(d => d.Value
+                            .Any(item => item.Name == xlName)).Value
+                        .FirstOrDefault(item => item.Name == xlName);
+                    _swTools.SwWritePart(comp, v.Text, target.Column);
+                }
+                else
+                {
+                    var comp = orderedDic.FirstOrDefault(d => d.Key.Item2.Name == xlName)
+                        .Key.Item2;
+                    _swTools.SwWriteAssy(comp, v.Text, target.Column);
+                }
             }
         }
-
-        /*private void ChangExcel(Excel.Range target)
-        {
-            Console.WriteLine("BBBB");
-            foreach (Range v in target.Rows)
-            {
-                //bool result = true;
-                string zz = _xlSheet.Cells[1, 1];
-                string b = _xlSheet.Cells[v.Row, 2];
-                Console.WriteLine("From excel: " + b);
-                Console.WriteLine(zz);
-                var gt = orderedDic.FirstOrDefault(q=>q.Value.Any(u=>u.Name==b)).Value
-                    .FirstOrDefault(z=>z.Name==b);
-                Console.WriteLine(gt.Name);    
-                /*var comp = orderedDic
-                    .Where(item => item.Value
-                        .Any(k => k.Name == _xlSheet.Cells[v.Row, 2]))
-                    .Select(t => t.Value.Any(pp => pp.Name == _xlSheet.Cells[v.Row, 2]))
-                    .Select(n=>n.)*/
-                        
-                  //  .Where(k=>k.)
-                //orderedComps.Where(item=>item.Name==_xlSheet.Cells[v.Row,2])
-                //var comp = orderedComps[v.Row-2];
-                //_swTools.SwWrite(comp, v.Text, target.Column);//, out result);
-                /*if (!result)
-                {
-                    _xlApp.Undo();
-                }*/
-      
     }
 }
 
 /*
+ //var comp = orderedComps[v.Row-2];
         xlBook.Save();
         xlBook.Close();
         XL.Quit();*/
+        
+/*
+        //bool result = true;
+        //var comp = orderedComps[v.Row-2];
+        //_swTools.SwWrite(comp, v.Text, target.Column);//, out result);
+        if (!result)
+        {
+            _xlApp.Undo();
+        }*/

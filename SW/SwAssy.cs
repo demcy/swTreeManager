@@ -8,10 +8,12 @@
         private SldWorks.ModelDoc2 swModel;
         private SldWorks.Configuration swConf;
         public string ConfName;
+        public SldWorks.Component2 Comp;
         public SwAssy(SldWorks.Component2 comp)
         {
             if (comp != null)
             {
+                Comp = comp;
                 swModel = (SldWorks.ModelDoc2) comp.GetModelDoc2();
                 Name = swModel.GetTitle();
                 swConf = (SldWorks.Configuration) swModel.GetActiveConfiguration();
