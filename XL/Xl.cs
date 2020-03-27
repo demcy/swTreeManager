@@ -18,7 +18,7 @@ namespace XL
 
         private SwTools _swTools;
         private List<SwComps> orderedComps;
-        private Dictionary<Tuple<double, string>, List<SwComps>> orderedDic;
+        private Dictionary<Tuple<double, SwAssy>, List<SwComps>> orderedDic;
         private double p = 1;
         private int level = 1;
         private string a = "";
@@ -48,7 +48,9 @@ namespace XL
             {
                 string lastP = ItemNo(dicItem.Key.Item1);
                 _xlSheet.Cells[i, 1].Value = lastP;
-                _xlSheet.Cells[i, 2].Value = dicItem.Key.Item2;
+                _xlSheet.Cells[i, 2].Value = dicItem.Key.Item2.Name;
+                _xlSheet.Cells[i, 3].Value = dicItem.Key.Item2.Description;
+                _xlSheet.Cells[i, 4].Value = dicItem.Key.Item2.CompanyNo;
                 i++;
                 //lastP = p.ToString() + ".";
                 orderedComps = dicItem.Value.GroupBy(item => item.Name)

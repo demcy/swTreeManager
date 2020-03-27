@@ -10,11 +10,12 @@ namespace CORE
         Xl xl = new Xl();
         public void SwInit()
         {
-            if (swTools.SwConnect() && swTools.SwOpenFile())
+            SwAssy swAssy;
+            if (swTools.SwConnect() && swTools.SwOpenFile(out swAssy))
             {
                 Console.WriteLine("READING DATA...");
                 Console.WriteLine("IT TAKES SOME TIME...");
-                swTools.SwRead(1, 0, 10);
+                swTools.SwRead(1, 0, 10, swAssy);
                 xl.OpenExcel(swTools);
             }
             else

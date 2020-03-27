@@ -42,7 +42,7 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="SwAss.cs" />
+        <Compile Include="SwAssy.cs" />
         <Compile Include="SwComps.cs" />
         <Compile Include="SwTools.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
