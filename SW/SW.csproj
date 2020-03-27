@@ -34,7 +34,7 @@
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="Interop.SldWorks, Version=27.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\Interop.SldWorks.dll</HintPath>
+          <HintPath>..\Interop.SldWorks.dll</HintPath>
         </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
