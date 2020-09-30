@@ -10,6 +10,7 @@ namespace SW
         private SldWorks.SldWorks _swApp;
         private SldWorks.AssemblyDoc _swAss;
         private SldWorks.ModelDoc2 _swModel;
+        private SldWorks.DrawingDoc _swDrawingDoc;
 
         public List<Component2> AssList = new List<Component2>();
         public Dictionary<Tuple<double,SwAssy>, List<SwComps>> MainAss = new Dictionary<Tuple<double,SwAssy>, List<SwComps>>();
@@ -140,6 +141,38 @@ namespace SW
             //_swAss.ForceRebuild2(true);
             swModel.EditRebuild3();
             
+        }
+
+        public void EasyOpen(string name)
+        {
+            _swDrawingDoc = (SldWorks.DrawingDoc)_swApp.OpenDoc(name, 3);
+            _swModel = (SldWorks.ModelDoc2) _swApp.ActiveDoc;
+        }
+
+        public void AddRevision()
+        {
+            var sheet = (SldWorks.Sheet)_swDrawingDoc.GetCurrentSheet();
+            var revisionTable = (SldWorks.RevisionTableAnnotation) sheet.RevisionTable;
+            revisionTable.AddRevision("Z");
+            var table = (TableAnnotation)revisionTable;
+            table.Text[0, 2] = "AS BUILT";
+            table.Text[0, 3] = table.Text[1, 3];
+            table.Text[0, 4] = table.Text[1, 4];
+            table.Text[0, 5] = table.Text[1, 5];
+            table.Text[0, 6] = table.Text[1, 6];
+        }
+
+        public void SaveToPdf(string n)
+        {
+            _swDrawingDoc.ForceRebuild();
+            var swExportPdfData = (ExportPdfData) _swApp.GetExportFileData(1);
+            _swModel.Extension.SaveAs(n, 0, 1, swExportPdfData, 0, 0);
+        }
+
+        public void CloseDoc(string name)
+        {
+            _swModel.Save();
+            _swApp.CloseDoc(name);
         }
         
         

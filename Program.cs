@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using CORE;
 
 
@@ -22,9 +23,8 @@ namespace ConsoleApp
             //return a;
             
             
-            
             DateTime t1 = DateTime.Now;
-            //Console.WriteLine(DateTime.Now.ToString("HH:mm:ss tt"));
+            Console.WriteLine(DateTime.Now.ToString("HH:mm:ss tt"));
             Core core = new Core();
             core.SwInit();
             DateTime t2 = DateTime.Now;
