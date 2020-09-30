@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using Microsoft.Win32;
 using System.Windows.Forms;
@@ -27,7 +28,8 @@ namespace WpfApp
         private void SolidFiles_Click(object sender, RoutedEventArgs e)
         {
             var openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = @"S:\Programs\Macros\SW TreeManager\19-816-04 - Additional Items";
+            openFileDialog.InitialDirectory = @"P:\1. BEIN";
+            //openFileDialog.InitialDirectory = @"S:\Programs\Macros\SW TreeManager\19-816-04 - Additional Items";
             openFileDialog.Multiselect = true;
             openFileDialog.Filter = "SolidWorks Drawings (*.slddrw)|*.slddrw";
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -39,7 +41,8 @@ namespace WpfApp
         private void GetDirectory_Click(object sender, RoutedEventArgs e)
         {
             var folderBrowserDialog = new FolderBrowserDialog();
-            folderBrowserDialog.SelectedPath = @"S:\Programs\Macros\SW TreeManager\19-816-04 - Additional Items";
+            folderBrowserDialog.SelectedPath = @"P:\1. BEIN";
+            //folderBrowserDialog.SelectedPath = @"S:\Programs\Macros\SW TreeManager\19-816-04 - Additional Items\Drawings";
             folderBrowserDialog.ShowDialog();
             drawingPath = folderBrowserDialog.SelectedPath + @"\";
         }
