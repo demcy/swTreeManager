@@ -89,11 +89,14 @@ namespace SW
             MainAss.Add(header, Comps);
         }
 
-        public void SwWritePart(SwComps comp, string changedText, int colN)//, out bool result)
+        public void SwWritePart(SwComps comp, string changedText, string colName)//, out bool result)
                  {
+                     
                      //result = true;
                      SldWorks.ModelDoc2 swModel = (SldWorks.ModelDoc2) comp.Comp.GetModelDoc2();
+
                      SldWorks.PartDoc swPart = (SldWorks.PartDoc) comp.Comp.GetModelDoc2();
+                     
                      
                      if (swModel.Extension.CustomPropertyBuilderTemplate[false] != BuilderTemplate)
                      {
@@ -101,15 +104,15 @@ namespace SW
                          swModel.AddCustomInfo3(comp.ConfName, "Description", 0, "");
                          swModel.AddCustomInfo3(comp.ConfName, "Company No", 0, "");
                      }
-                     if (colN == 3)
+                     if (colName == "Description")
                      {
                          swModel.CustomInfo2[comp.ConfName, "Description"]=changedText;
                      }
-                     if (colN == 4)
+                     else if (colName == "Company No")
                      {
                          swModel.CustomInfo2[comp.ConfName, "Company No"]=changedText;
                      }
-                     if (colN == 5)
+                     else if (colName == "Material")
                      {
                          swPart.SetMaterialPropertyName2(comp.ConfName, Database, changedText);
                          /*string m = swPart.GetMaterialPropertyName2(comp.ConfName, out Database);
@@ -117,6 +120,19 @@ namespace SW
                          {
                              result = false;
                          }*/
+                     }
+
+                     else
+                     {
+                         //Console.WriteLine("here");
+                         // swModel = (SldWorks.ModelDoc2) comp.Comp.GetModelDoc2();
+                         // CustomPropertyManager CPM = swModel.Extension.get_CustomPropertyManager(comp.ConfName);
+                         // CPM.Add(colName, "Text", changedText);
+                         // CPM.Add("colName", "Text", "changedText");
+                         // swModel.set_CustomInfo2(comp.ConfName, colName, changedText);
+                         // swModel = (SldWorks.ModelDoc2) comp.Comp.GetModelDoc2();
+                         // Console.WriteLine(swModel);
+                         swModel.CustomInfo2[comp.ConfName, colName]=changedText;
                      }
                      _swAss.ForceRebuild2(true);
                  }

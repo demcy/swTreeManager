@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Excel = Microsoft.Office.Interop.Excel;
-using Microsoft.Office.Interop.Excel;
+// using System.Reflection;
 using SW;
 
 namespace XL
 {
     public class Xl
     {
-        
-        
         private readonly Excel.Application _xlApp = new Excel.Application();
         private Excel.Workbook _xlBook;
         private Excel.Worksheet _xlSheet;
@@ -23,21 +21,25 @@ namespace XL
         private int level = 1;
         private string a = "";
         
+        //public event Excel.DocEvents_ChangeEventHandler Change;
+        
         public void OpenExcel(SwTools swTools)
         {
+            
             _swTools = swTools;
             _xlApp.Visible = true;
-            _xlBook = _xlApp.Workbooks.Add();
+            _xlBook = _xlApp.Workbooks.Open(
+                @"S:\Programs\Macros\SW TreeManager\SW TreeManager\sw-tree-manager_Template.xlsx");
             _xlSheet = (Excel.Worksheet)_xlBook.Worksheets[1];
            
-            _xlSheet.Cells[1, 1].Value = "Item No";
-            _xlSheet.Cells[1, 2].Value = "Component name";
-            _xlSheet.Cells[1, 3].Value = "Description";
-            _xlSheet.Cells[1, 4].Value = "Company No";
-            _xlSheet.Cells[1, 5].Value = "Material";
+            //.Cells[1, 1] = "Item No";
+            // _xlSheet.Cells[1, 2] = "Component name";
+            // _xlSheet.Cells[1, 3] = "Description";
+            // _xlSheet.Cells[1, 4] = "Company No";
+            // _xlSheet.Cells[1, 5] = "Material";
             
-            _xlSheet.Range[_xlSheet.Cells[1, 1],_xlSheet.Cells[1, 5]].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
-            _xlSheet.Range[_xlSheet.Cells[1, 1], _xlSheet.Cells[1, 5]].Cells.Font.Bold = true;
+            // _xlSheet.Range[_xlSheet.Cells[1, 1],_xlSheet.Cells[1, 5]].Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            // _xlSheet.Range[_xlSheet.Cells[1, 1], _xlSheet.Cells[1, 5]].Cells.Font.Bold = true;
             
             int i = 2;
             //string lastP;
@@ -47,10 +49,10 @@ namespace XL
             foreach (var dicItem in orderedDic)
             {
                 string lastP = ItemNo(dicItem.Key.Item1);
-                _xlSheet.Cells[i, 1].Value = lastP;
-                _xlSheet.Cells[i, 2].Value = dicItem.Key.Item2.Name;
-                _xlSheet.Cells[i, 3].Value = dicItem.Key.Item2.Description;
-                _xlSheet.Cells[i, 4].Value = dicItem.Key.Item2.CompanyNo;
+                _xlSheet.Cells[i, 1] = lastP;
+                _xlSheet.Cells[i, 2] = dicItem.Key.Item2.Name;
+                _xlSheet.Cells[i, 3] = dicItem.Key.Item2.Description;
+                _xlSheet.Cells[i, 4] = dicItem.Key.Item2.CompanyNo;
                 i++;
                 //lastP = p.ToString() + ".";
                 orderedComps = dicItem.Value.GroupBy(item => item.Name)
@@ -58,23 +60,24 @@ namespace XL
                     .OrderBy(item => item.Name).ToList();
                 foreach (var comp in orderedComps)
                 {
-                    _xlSheet.Cells[i, 1].Value = lastP + "." + p.ToString();
-                    _xlSheet.Cells[i, 2].Value = comp.Name;
-                    _xlSheet.Cells[i, 3].Value = comp.Description;
-                    _xlSheet.Cells[i, 4].Value = comp.CompanyNo;
-                    _xlSheet.Cells[i, 5].Value = comp.Material;
+                    _xlSheet.Cells[i, 1] = lastP + "." + p.ToString();
+                    _xlSheet.Cells[i, 2] = comp.Name;
+                    _xlSheet.Cells[i, 3] = comp.Description;
+                    _xlSheet.Cells[i, 4] = comp.CompanyNo;
+                    _xlSheet.Cells[i, 5] = comp.Material;
                     i++;
                     p++;
                 }
             }
-            _xlSheet.Columns.AutoFit();
-            _xlSheet.Columns.Locked = false;
-            _xlSheet.Range[_xlSheet.Cells[1, 1],_xlSheet.Cells[1, 5]].Locked = true;
-            _xlSheet.Columns[1].Locked = true;
-            _xlSheet.Columns[2].Locked = true;
-            _xlSheet.Protect(); 
+            //_xlSheet.Columns.AutoFit();
+            //_xlSheet.Columns.Locked = false;
+            //_xlSheet.Range[_xlSheet.Cells[1, 1],_xlSheet.Cells[1, 5]].Locked = true;
+            //_xlSheet.Columns[1].Locked = true;
+            //_xlSheet.Columns[2].Locked = true;
+            //_xlSheet.Protect(); 
             
             _xlSheet.Change += new Excel.DocEvents_ChangeEventHandler(ChangExcel);
+            
             
         }
 
@@ -117,9 +120,10 @@ namespace XL
         
         private void ChangExcel(Excel.Range target)
         {
-            foreach (Range v in target.Rows)
+            
+            foreach (Excel.Range v in target.Rows)
             {
-                string xlName = _xlSheet.Cells[v.Row, 2].Text;
+                string xlName = (_xlSheet.Cells[v.Row, 2] as Excel.Range).Value2.ToString();
                 bool ifassy = orderedDic.Any(d => d.Value
                     .Any(item => item.Name == xlName));
                 if (ifassy)
@@ -127,13 +131,15 @@ namespace XL
                     var comp = orderedDic.FirstOrDefault(d => d.Value
                             .Any(item => item.Name == xlName)).Value
                         .FirstOrDefault(item => item.Name == xlName);
-                    _swTools.SwWritePart(comp, v.Text, target.Column);
+                    //_swTools.SwWritePart(comp, v.Text.ToString(), target.Column);
+                    //Console.WriteLine(comp.Name);
+                    _swTools.SwWritePart(comp, v.Text.ToString(), (_xlSheet.Cells[1, target.Column] as Excel.Range).Value2.ToString());
                 }
                 else
                 {
                     var comp = orderedDic.FirstOrDefault(d => d.Key.Item2.Name == xlName)
                         .Key.Item2;
-                    _swTools.SwWriteAssy(comp, v.Text, target.Column);
+                    _swTools.SwWriteAssy(comp, v.Text.ToString(), target.Column);
                 }
             }
         }
