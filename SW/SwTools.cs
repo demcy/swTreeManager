@@ -9,14 +9,16 @@ namespace SW
     {
         private SldWorks.SldWorks _swApp;
         private SldWorks.AssemblyDoc _swAss;
-        private SldWorks.ModelDoc2 _swModel;
         private SldWorks.DrawingDoc _swDrawingDoc;
+        private SldWorks.ModelDoc2 _swModel;
 
         public List<Component2> AssList = new List<Component2>();
-        public Dictionary<Tuple<double,SwAssy>, List<SwComps>> MainAss = new Dictionary<Tuple<double,SwAssy>, List<SwComps>>();
-        
-        string Database = "S:/Solidworks Settings/Materials/FD2P Other Materials.sldmat";
+
         string BuilderTemplate = "S:/Solidworks Settings/Templates/FD2P/FD2P Custom Properties/FD2P Custom Properties Part.prtprp";
+
+        //string Database = "S:/Solidworks Settings/Materials/FD2P Other Materials.sldmat";
+        string Database = @"S:\Solidworks Settings 2018\Materials\INGENIUM DIN Materials.sldmat";
+        public Dictionary<Tuple<double,SwAssy>, List<SwComps>> MainAss = new Dictionary<Tuple<double,SwAssy>, List<SwComps>>();
 
         public bool SwConnect()
         {
@@ -32,6 +34,7 @@ namespace SW
                 return false;
             }
         }
+
         public bool SwOpenFile(out SwAssy swAssy)
         {
             _swAss = (SldWorks.AssemblyDoc) _swApp.ActiveDoc;
@@ -47,6 +50,7 @@ namespace SW
             swAssy.CompanyNo = _swModel.CustomInfo2[swConf.Name, "Company No"];
             return _swAss != null;
         }
+
         public void SwRead(double l, double p, double d, SwAssy swAssy)
         {
             double level = l;
@@ -90,73 +94,54 @@ namespace SW
         }
 
         public void SwWritePart(SwComps comp, string changedText, string colName)//, out bool result)
+             {
+                 SldWorks.ModelDoc2 swModel = (SldWorks.ModelDoc2) comp.Comp.GetModelDoc2();
+                 SldWorks.PartDoc swPart = (SldWorks.PartDoc) comp.Comp.GetModelDoc2();
+                 
+                 if (swModel.Extension.CustomPropertyBuilderTemplate[false] != BuilderTemplate)
                  {
+                     swModel.Extension.CustomPropertyBuilderTemplate[false] = BuilderTemplate;
+                     swModel.AddCustomInfo3(comp.ConfName, "Description", 0, "");
+                     swModel.AddCustomInfo3(comp.ConfName, "Company No", 0, "");
+                 }
                      
-                     //result = true;
-                     SldWorks.ModelDoc2 swModel = (SldWorks.ModelDoc2) comp.Comp.GetModelDoc2();
-
-                     SldWorks.PartDoc swPart = (SldWorks.PartDoc) comp.Comp.GetModelDoc2();
-                     
-                     
-                     if (swModel.Extension.CustomPropertyBuilderTemplate[false] != BuilderTemplate)
+                 if (colName == "Material")
+                 {
+                     swPart.SetMaterialPropertyName2(comp.ConfName, Database, changedText);
+                     /*string m = swPart.GetMaterialPropertyName2(comp.ConfName, out Database);
+                     if (m != changedText)
                      {
-                         swModel.Extension.CustomPropertyBuilderTemplate[false] = BuilderTemplate;
-                         swModel.AddCustomInfo3(comp.ConfName, "Description", 0, "");
-                         swModel.AddCustomInfo3(comp.ConfName, "Company No", 0, "");
-                     }
-                     if (colName == "Description")
+                         result = false;
+                     }*/
+                 }
+                 else
+                 {
+                     bool ifDone = swModel.AddCustomInfo3(comp.ConfName, colName, 0, changedText);
+                     if (!ifDone)
                      {
-                         swModel.CustomInfo2[comp.ConfName, "Description"]=changedText;
-                     }
-                     else if (colName == "Company No")
-                     {
-                         swModel.CustomInfo2[comp.ConfName, "Company No"]=changedText;
-                     }
-                     else if (colName == "Material")
-                     {
-                         swPart.SetMaterialPropertyName2(comp.ConfName, Database, changedText);
-                         /*string m = swPart.GetMaterialPropertyName2(comp.ConfName, out Database);
-                         if (m != changedText)
-                         {
-                             result = false;
-                         }*/
-                     }
-
-                     else
-                     {
-                         //Console.WriteLine("here");
-                         // swModel = (SldWorks.ModelDoc2) comp.Comp.GetModelDoc2();
-                         // CustomPropertyManager CPM = swModel.Extension.get_CustomPropertyManager(comp.ConfName);
-                         // CPM.Add(colName, "Text", changedText);
-                         // CPM.Add("colName", "Text", "changedText");
-                         // swModel.set_CustomInfo2(comp.ConfName, colName, changedText);
-                         // swModel = (SldWorks.ModelDoc2) comp.Comp.GetModelDoc2();
-                         // Console.WriteLine(swModel);
                          swModel.CustomInfo2[comp.ConfName, colName]=changedText;
                      }
-                     _swAss.ForceRebuild2(true);
                  }
-        
-        public void SwWriteAssy(SwAssy comp, string changedText, int colN)
+                 swModel.EditRebuild3();
+                 _swAss.ForceRebuild2(true);
+             }
+
+        public void SwWriteAssy(SwAssy comp, string changedText, string colName)
         {
-            SldWorks.ModelDoc2 swModel = (SldWorks.ModelDoc2) comp.Comp.GetModelDoc2();
+            ModelDoc2 swModel = (ModelDoc2) comp.Comp.GetModelDoc2();
             if (swModel.Extension.CustomPropertyBuilderTemplate[false] != BuilderTemplate)
             {
                 swModel.Extension.CustomPropertyBuilderTemplate[false] = BuilderTemplate;
                 swModel.AddCustomInfo3(comp.ConfName, "Description", 0, "");
                 swModel.AddCustomInfo3(comp.ConfName, "Company No", 0, "");
             }
-            if (colN == 3)
+            bool ifDone = swModel.AddCustomInfo3(comp.ConfName, colName, 0, changedText);
+            if (!ifDone)
             {
-                swModel.CustomInfo2[comp.ConfName, "Description"]=changedText;
+                swModel.CustomInfo2[comp.ConfName, colName]=changedText;
             }
-            if (colN == 4)
-            {
-                swModel.CustomInfo2[comp.ConfName, "Company No"]=changedText;
-            }
-            //_swAss.ForceRebuild2(true);
             swModel.EditRebuild3();
-            
+            _swAss.ForceRebuild2(true);
         }
 
         public void EasyOpen(string name)
@@ -190,11 +175,6 @@ namespace SW
             _swModel.Save();
             _swApp.CloseDoc(name);
         }
-        
-        
-        
-
-        
     }
 }
 //private static SldWorks.ModelDoc2 _swModel;
@@ -212,3 +192,12 @@ namespace SW
 //swModel.EditRebuild3();
 //swModel.ForceRebuild3(true);
 //_swAss.EditRebuild();
+
+//_swApp.ActivateDoc(comp.Comp.GetPathName());
+// swModel = (SldWorks.ModelDoc2) comp.Comp.GetModelDoc2();
+// CustomPropertyManager CPM = swModel.Extension.get_CustomPropertyManager(comp.ConfName);
+// CPM.Add(colName, "Text", changedText);
+// CPM.Add("colName", "Text", "changedText");
+// swModel.set_CustomInfo2(comp.ConfName, colName, changedText);
+// swModel = (SldWorks.ModelDoc2) comp.Comp.GetModelDoc2();
+// Console.WriteLine(swModel);

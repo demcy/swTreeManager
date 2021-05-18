@@ -23,14 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10ce7336-ff90-4142-9488-e15b04da5a43" name="Default Changelist" comment="revision +">
-      <change afterPath="$PROJECT_DIR$/Microsoft.Office.Interop.Excel.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sw-tree-manager_Template.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SW TreeManager.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/SW TreeManager.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SW/SwAssy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SW/SwAssy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SW/SwComps.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SW/SwComps.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SW/SwTools.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SW/SwTools.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WpfApp/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/WpfApp/MainWindow.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XL/XL.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/XL/XL.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/XL/Xl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/XL/Xl.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +72,6 @@
         <option value="$PROJECT_DIR$/ConsoleApp.csproj" />
         <option value="$PROJECT_DIR$/SW/SwAss.cs" />
         <option value="$PROJECT_DIR$/CORE/Core.cs" />
-        <option value="$PROJECT_DIR$/SW/SwAssy.cs" />
         <option value="$PROJECT_DIR$/Program.cs" />
         <option value="$PROJECT_DIR$/ConsoleApp_Revision/Program.cs" />
         <option value="$PROJECT_DIR$/Revision/Class1.cs" />
@@ -84,10 +79,12 @@
         <option value="$PROJECT_DIR$/WpfApp/WpfApp.csproj" />
         <option value="$PROJECT_DIR$/DrawRevision/Revision.cs" />
         <option value="$PROJECT_DIR$/WpfApp/MainWindow.xaml.cs" />
-        <option value="$PROJECT_DIR$/SW/SwComps.cs" />
-        <option value="$PROJECT_DIR$/SW/SwTools.cs" />
-        <option value="$PROJECT_DIR$/XL/Xl.cs" />
         <option value="$PROJECT_DIR$/WpfApp/MainWindow.xaml" />
+        <option value="$PROJECT_DIR$/SW/SWCompnents.cs" />
+        <option value="$PROJECT_DIR$/XL/Xl.cs" />
+        <option value="$PROJECT_DIR$/SW/SwComps.cs" />
+        <option value="$PROJECT_DIR$/SW/SwAssy.cs" />
+        <option value="$PROJECT_DIR$/SW/SwTools.cs" />
       </list>
     </option>
   </component>
@@ -115,7 +112,7 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Project.WpfApp">
+  <component name="RunManager" selected=".NET Project.Default">
     <configuration name="ConsoleApp_Revision" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -225,7 +222,8 @@
       <workItem from="1621239883710" duration="728000" />
       <workItem from="1621240639168" duration="1172000" />
       <workItem from="1621242001897" duration="143000" />
-      <workItem from="1621245644908" duration="14438000" />
+      <workItem from="1621245644908" duration="14680000" />
+      <workItem from="1621346082468" duration="12870000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1575294691887</created>
@@ -318,7 +316,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601455358395</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="for checking">
+      <created>1621260482819</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1621260482819</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -354,37 +359,42 @@
     <MESSAGE value="added dll" />
     <MESSAGE value="revision" />
     <MESSAGE value="revision +" />
-    <option name="LAST_COMMIT_MESSAGE" value="revision +" />
+    <MESSAGE value="for checking" />
+    <option name="LAST_COMMIT_MESSAGE" value="for checking" />
   </component>
   <component name="WindowStateProjectService">
     <state x="708" y="345" key="#Notifications" timestamp="1621242018003">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="708" y="345" key="#Notifications/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1621242018003" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1621260244212">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1621354858483">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1621260244212" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1621260244212">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1621354858483" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1621354858483">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1621260244212" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1621260244212">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1621354858483" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1621354858483">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1621260244212" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1621260244212">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1621354858483" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1621354858483">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1621260244212" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1621354858483" />
     <state x="552" y="252" key="Rider.ProjectTemplateDialog.Size" timestamp="1621258846020">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="252" key="Rider.ProjectTemplateDialog.Size/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1621258846020" />
-    <state x="764" y="194" key="RiderGenerateDialog" timestamp="1621256063149">
+    <state x="764" y="194" key="RiderGenerateDialog" timestamp="1621352181035">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="764" y="194" key="RiderGenerateDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1621256063149" />
+    <state x="764" y="194" key="RiderGenerateDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1621352181035" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1621260486266">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1621260486266" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

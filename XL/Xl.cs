@@ -65,6 +65,7 @@ namespace XL
                     _xlSheet.Cells[i, 3] = comp.Description;
                     _xlSheet.Cells[i, 4] = comp.CompanyNo;
                     _xlSheet.Cells[i, 5] = comp.Material;
+                    //COMP/GETVALUE OF cells(1, x) -< while x in not ""!!!!
                     i++;
                     p++;
                 }
@@ -120,26 +121,24 @@ namespace XL
         
         private void ChangExcel(Excel.Range target)
         {
-            
             foreach (Excel.Range v in target.Rows)
             {
                 string xlName = (_xlSheet.Cells[v.Row, 2] as Excel.Range).Value2.ToString();
-                bool ifassy = orderedDic.Any(d => d.Value
-                    .Any(item => item.Name == xlName));
-                if (ifassy)
+                string colName = (_xlSheet.Cells[1, v.Column] as Excel.Range).Value2.ToString();
+                bool ifPart = orderedDic.Any(d => d.Value
+                     .Any(item => item.Name == xlName));
+                if (ifPart)
                 {
                     var comp = orderedDic.FirstOrDefault(d => d.Value
                             .Any(item => item.Name == xlName)).Value
                         .FirstOrDefault(item => item.Name == xlName);
-                    //_swTools.SwWritePart(comp, v.Text.ToString(), target.Column);
-                    //Console.WriteLine(comp.Name);
-                    _swTools.SwWritePart(comp, v.Text.ToString(), (_xlSheet.Cells[1, target.Column] as Excel.Range).Value2.ToString());
+                    _swTools.SwWritePart(comp, v.Text.ToString(), colName);
                 }
                 else
                 {
                     var comp = orderedDic.FirstOrDefault(d => d.Key.Item2.Name == xlName)
-                        .Key.Item2;
-                    _swTools.SwWriteAssy(comp, v.Text.ToString(), target.Column);
+                             .Key.Item2;
+                    _swTools.SwWriteAssy(comp, v.Text.ToString(), colName);
                 }
             }
         }

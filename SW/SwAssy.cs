@@ -1,4 +1,6 @@
-﻿namespace SW
+﻿using SldWorks;
+
+namespace SW
 {
     public class SwAssy
     {
