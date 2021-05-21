@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -59,8 +60,19 @@ namespace WpfApp
             }
             else
             {
+                List<string> props = new List<string>();
+                props.Add(Input01.Text);
+                props.Add(Input02.Text);
+                props.Add(Input03.Text);
+                props.Add(Input04.Text);
+                props.Add(Input05.Text);
+                props.Add(Input06.Text);
+                props.Add(Input07.Text);
+                props.Add(Input08.Text);
+                props.Add(Input09.Text);
+                props.Add(Input10.Text);
                 var revision = new Revision();
-                revision.GetFiles(solidFiles, drawingPath);
+                revision.GetFiles(solidFiles, drawingPath, props);
             }
         }
     }

@@ -150,13 +150,14 @@ namespace SW
             _swModel = (SldWorks.ModelDoc2) _swApp.ActiveDoc;
         }
 
-        public void AddRevision()
+        public void AddRevision(List<string> props)
         {
             var sheet = (SldWorks.Sheet)_swDrawingDoc.GetCurrentSheet();
             var revisionTable = (SldWorks.RevisionTableAnnotation) sheet.RevisionTable;
             revisionTable.AddRevision("Z");
             var table = (TableAnnotation)revisionTable;
-            table.Text[0, 2] = "AS BUILT";
+            /////PROPS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            table.Text[0, 2] = props[2];
             table.Text[0, 3] = table.Text[1, 3];
             table.Text[0, 4] = table.Text[1, 4];
             table.Text[0, 5] = table.Text[1, 5];
