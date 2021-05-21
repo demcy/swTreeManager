@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Excel = Microsoft.Office.Interop.Excel;
-// using System.Reflection;
+//using System.Reflection;
 using SW;
 
 namespace XL
@@ -20,27 +20,41 @@ namespace XL
         private double p = 1;
         private int level = 1;
         private string a = "";
-        
+
         //public event Excel.DocEvents_ChangeEventHandler Change;
-        
+
         public void OpenExcel(SwTools swTools)
         {
-            
             _swTools = swTools;
             _xlApp.Visible = true;
             _xlBook = _xlApp.Workbooks.Open(
                 @"S:\Programs\Macros\SW TreeManager\SW TreeManager\sw-tree-manager_Template.xlsx");
-            _xlSheet = (Excel.Worksheet)_xlBook.Worksheets[1];
-           
+            _xlSheet = (Excel.Worksheet) _xlBook.Worksheets[1];
+            List<string> headings = new List<string>();
+            int k = 6;
+            try
+            {
+                while (((Excel.Range) _xlSheet.Cells[1, k]).Value2.ToString() != "")
+                {
+                    headings.Add(((Excel.Range) _xlSheet.Cells[1, k]).Value2.ToString());
+                    Console.WriteLine(((Excel.Range) _xlSheet.Cells[1, k]).Value2.ToString());
+                    k++;
+                }
+            }
+            catch
+            {
+                Console.WriteLine((k - 6).ToString() + "additional headings");
+            }
+            //Console.WriteLine(k);
             //.Cells[1, 1] = "Item No";
             // _xlSheet.Cells[1, 2] = "Component name";
             // _xlSheet.Cells[1, 3] = "Description";
             // _xlSheet.Cells[1, 4] = "Company No";
             // _xlSheet.Cells[1, 5] = "Material";
-            
+
             // _xlSheet.Range[_xlSheet.Cells[1, 1],_xlSheet.Cells[1, 5]].Cells.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
             // _xlSheet.Range[_xlSheet.Cells[1, 1], _xlSheet.Cells[1, 5]].Cells.Font.Bold = true;
-            
+
             int i = 2;
             //string lastP;
             orderedDic = swTools.MainAss.OrderBy(item => item.Key.Item1)
@@ -53,6 +67,15 @@ namespace XL
                 _xlSheet.Cells[i, 2] = dicItem.Key.Item2.Name;
                 _xlSheet.Cells[i, 3] = dicItem.Key.Item2.Description;
                 _xlSheet.Cells[i, 4] = dicItem.Key.Item2.CompanyNo;
+                _xlSheet.Cells[i, 5] = dicItem.Key.Item2.GetProperty("Material");
+                int n = 6;
+                foreach (var heading in headings)
+                {
+                    string property = dicItem.Key.Item2.GetProperty(heading);
+                    _xlSheet.Cells[i, n] = property;
+                    n++;
+                }
+
                 i++;
                 //lastP = p.ToString() + ".";
                 orderedComps = dicItem.Value.GroupBy(item => item.Name)
@@ -65,6 +88,14 @@ namespace XL
                     _xlSheet.Cells[i, 3] = comp.Description;
                     _xlSheet.Cells[i, 4] = comp.CompanyNo;
                     _xlSheet.Cells[i, 5] = comp.Material;
+                    int h = 6;
+                    foreach (var heading in headings)
+                    {
+                        string property = comp.GetProperty(heading);
+                        _xlSheet.Cells[i, h] = property;
+                        h++;
+                    }
+
                     //COMP/GETVALUE OF cells(1, x) -< while x in not ""!!!!
                     i++;
                     p++;
@@ -76,10 +107,8 @@ namespace XL
             //_xlSheet.Columns[1].Locked = true;
             //_xlSheet.Columns[2].Locked = true;
             //_xlSheet.Protect(); 
-            
+
             _xlSheet.Change += new Excel.DocEvents_ChangeEventHandler(ChangExcel);
-            
-            
         }
 
         private string ItemNo(double d)
@@ -98,35 +127,37 @@ namespace XL
                 p = 1;
                 return a;
             }
+
             if (level == curL)
             {
-                int lastC = int.Parse(a.Substring(a.Length-1,1));
+                int lastC = int.Parse(a.Substring(a.Length - 1, 1));
                 p = 1;
                 a = a.Substring(0, a.Length - 1) + (lastC + 1).ToString();
                 return a;
             }
+
             if (level > curL)
             {
                 int dif = level - curL + 1;
                 level = curL;
-                int lastC = int.Parse(a.Substring(a.Length-dif,1));
+                int lastC = int.Parse(a.Substring(a.Length - dif, 1));
                 p = 1;
                 a = a.Substring(0, a.Length - dif) + (lastC + 1).ToString();
                 return a;
             }
 
             return "";
-
         }
-        
+
         private void ChangExcel(Excel.Range target)
         {
             foreach (Excel.Range v in target.Rows)
             {
-                string xlName = (_xlSheet.Cells[v.Row, 2] as Excel.Range).Value2.ToString();
-                string colName = (_xlSheet.Cells[1, v.Column] as Excel.Range).Value2.ToString();
+                //Console.WriteLine(((Excel.Range)_xlSheet.Cells[1, v.Column]).Value2.ToString());
+                string xlName = ((Excel.Range) _xlSheet.Cells[v.Row, 2]).Value2.ToString();
+                string colName = ((Excel.Range) _xlSheet.Cells[1, v.Column]).Value2.ToString();
                 bool ifPart = orderedDic.Any(d => d.Value
-                     .Any(item => item.Name == xlName));
+                    .Any(item => item.Name == xlName));
                 if (ifPart)
                 {
                     var comp = orderedDic.FirstOrDefault(d => d.Value
@@ -137,7 +168,7 @@ namespace XL
                 else
                 {
                     var comp = orderedDic.FirstOrDefault(d => d.Key.Item2.Name == xlName)
-                             .Key.Item2;
+                        .Key.Item2;
                     _swTools.SwWriteAssy(comp, v.Text.ToString(), colName);
                 }
             }
@@ -150,7 +181,7 @@ namespace XL
         xlBook.Save();
         xlBook.Close();
         XL.Quit();*/
-        
+
 /*
         //bool result = true;
         //var comp = orderedComps[v.Row-2];

@@ -45,5 +45,10 @@ namespace SW
         {
             return n.Substring(0, n.LastIndexOf("-", StringComparison.Ordinal));
         }
+
+        public string GetProperty(string key)
+        {
+            return swModel.CustomInfo2[swConf.Name, key];
+        }
     }
 }

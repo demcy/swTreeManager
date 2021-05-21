@@ -1,5 +1,6 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=C_003A_005CProgram_0020Files_005CMicrosoft_0020Office_005Croot_005COffice16_005CADDINS_005CMicrosoft_0020Power_0020Query_0020for_0020Excel_0020Integrated_005Cbin_005CMicrosoft_002EOffice_002EInterop_002EExcel_002Edll/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=S_003A_005CPrograms_005CMacros_005CSW_0020TreeManager_005CSW_0020TreeManager_005CInterop_002EOffice_002Edll/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=S_003A_005CPrograms_005CMacros_005CSW_0020TreeManager_005CSW_0020TreeManager_005CMicrosoft_002EOffice_002EInterop_002EExcel_002Edll/@EntryIndexedValue">True</s:Boolean>
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
   &lt;Assembly Path="S:\Programs\Macros\SW TreeManager\Interop.SldWorks.dll" /&gt;&#xD;
