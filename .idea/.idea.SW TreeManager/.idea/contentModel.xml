@@ -6,6 +6,7 @@
     <e p="C:\Users\Aleksandr Hohlatsov\AppData\Roaming\JetBrains\Rider2020.2\consoles\db" t="IncludeRecursive" />
     <e p="C:\Users\Aleksandr Hohlatsov\AppData\Roaming\JetBrains\Rider2020.2\extensions" t="IncludeRecursive" />
     <e p="S:\Programs\Macros\SW TreeManager\SW TreeManager" t="IncludeRecursive">
+      <e p="App.config" t="Include" />
       <e p="bin" t="ExcludeRecursive" />
       <e p="ConsoleApp.csproj" t="IncludeRecursive" />
       <e p="CORE" t="IncludeRecursive">

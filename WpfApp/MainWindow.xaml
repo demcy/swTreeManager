@@ -29,7 +29,7 @@
         </Grid.ColumnDefinitions>
        
         
-        <Button Grid.Row="0" Grid.ColumnSpan="10" Click="SolidFiles_Click" Width="450" Height="40" FontSize="20">SolidWorks drawings Directory</Button>
+        <Button Grid.Row="0" Grid.ColumnSpan="10" Click="SolidFiles_Click" Width="450" Height="40" FontSize="20">SolidWorks drawings</Button>
         <Button Grid.Row="1" Grid.ColumnSpan="10" Click="GetDirectory_Click" Width="450" Height="40" FontSize="20">PDF drawings Directory</Button>
         <TextBox Name="Input01" Grid.Row="2" Grid.Column="0" Width="150" Height="30"  TextAlignment="Center"  FontSize="14">Z</TextBox>
         <TextBox Name="Input02" Grid.Row="2" Grid.Column="1" Width="150" Height="30"  TextAlignment="Center"  FontSize="14"></TextBox>

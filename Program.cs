@@ -3,6 +3,7 @@ using System.IO;
 using CORE;
 
 
+
 namespace ConsoleApp
 {
     internal class Program
@@ -21,8 +22,7 @@ namespace ConsoleApp
             //p = 1;
             //a = a.Substring(0, a.Length - 3) + (lastC + 1).ToString();
             //return a;
-            
-            
+
             DateTime t1 = DateTime.Now;
             Console.WriteLine(DateTime.Now.ToString("HH:mm:ss tt"));
             Core core = new Core();

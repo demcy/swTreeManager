@@ -16,8 +16,9 @@ namespace SW
 
         string BuilderTemplate = "S:/Solidworks Settings/Templates/FD2P/FD2P Custom Properties/FD2P Custom Properties Part.prtprp";
 
-        //string Database = "S:/Solidworks Settings/Materials/FD2P Other Materials.sldmat";
-        string Database = @"S:\Solidworks Settings 2018\Materials\INGENIUM DIN Materials.sldmat";
+        string database;// = "S:/Solidworks Settings/Materials/FD2P Other Materials.sldmat";
+        
+        //string Database = @"S:\Solidworks Settings 2018\Materials\INGENIUM DIN Materials.sldmat";
         public Dictionary<Tuple<double,SwAssy>, List<SwComps>> MainAss = new Dictionary<Tuple<double,SwAssy>, List<SwComps>>();
 
         public bool SwConnect()
@@ -35,8 +36,9 @@ namespace SW
             }
         }
 
-        public bool SwOpenFile(out SwAssy swAssy)
+        public bool SwOpenFile(out SwAssy swAssy, string db)
         {
+            database = db;
             _swAss = (SldWorks.AssemblyDoc) _swApp.ActiveDoc;
             _swModel = (SldWorks.ModelDoc2) _swApp.ActiveDoc;
             _swAss.ResolveAllLightweight();
@@ -107,7 +109,8 @@ namespace SW
                      
                  if (colName == "Material")
                  {
-                     swPart.SetMaterialPropertyName2(comp.ConfName, Database, changedText);
+                     swPart.SetMaterialPropertyName2(comp.ConfName, database, changedText);
+                     
                      /*string m = swPart.GetMaterialPropertyName2(comp.ConfName, out Database);
                      if (m != changedText)
                      {
@@ -154,14 +157,30 @@ namespace SW
         {
             var sheet = (SldWorks.Sheet)_swDrawingDoc.GetCurrentSheet();
             var revisionTable = (SldWorks.RevisionTableAnnotation) sheet.RevisionTable;
-            revisionTable.AddRevision("Z");
+            revisionTable.AddRevision(props[0]);
             var table = (TableAnnotation)revisionTable;
-            /////PROPS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            if (props[1] != "")
+            {
+                table.Text[0, 1] = props[1];
+            }
             table.Text[0, 2] = props[2];
-            table.Text[0, 3] = table.Text[1, 3];
-            table.Text[0, 4] = table.Text[1, 4];
-            table.Text[0, 5] = table.Text[1, 5];
-            table.Text[0, 6] = table.Text[1, 6];
+            int colCount = table.ColumnCount;
+            for (int i = 3; i < colCount; i++)
+            {
+                if (props[i] == "")
+                {
+                    table.Text[0, i] = table.Text[1, i];
+                }
+                else
+                {
+                    table.Text[0, i] = props[i];
+                }
+            }
+            // table.Text[0, 2] = props[2];
+            // table.Text[0, 3] = table.Text[1, 3];
+            // table.Text[0, 4] = table.Text[1, 4];
+            // table.Text[0, 5] = table.Text[1, 5];
+            // table.Text[0, 6] = table.Text[1, 6];
         }
 
         public void SaveToPdf(string n)
