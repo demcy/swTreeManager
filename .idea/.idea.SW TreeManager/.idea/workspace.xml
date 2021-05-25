@@ -13,15 +13,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10ce7336-ff90-4142-9488-e15b04da5a43" name="Default Changelist" comment="revision +">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SW TreeManager/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.config" beforeDir="false" afterPath="$PROJECT_DIR$/App.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CORE/Core.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CORE/Core.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SW TreeManager.sln" beforeDir="false" afterPath="$PROJECT_DIR$/SW TreeManager.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SW/SwTools.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SW/SwTools.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XL/Xl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/XL/Xl.cs" afterDir="false" />
-    </list>
+    <list default="true" id="10ce7336-ff90-4142-9488-e15b04da5a43" name="Default Changelist" comment="initial commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -223,7 +215,7 @@
       <workItem from="1621346082468" duration="13324000" />
       <workItem from="1621610036009" duration="15257000" />
       <workItem from="1621927563637" duration="8781000" />
-      <workItem from="1621942422426" duration="2895000" />
+      <workItem from="1621942422426" duration="3655000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1575294691887</created>
@@ -351,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621939891269</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="initial commit">
+      <created>1621945664875</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1621945664875</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -392,7 +391,8 @@
     <MESSAGE value="write amd read XL new features release" />
     <MESSAGE value="design and props" />
     <MESSAGE value="before devision" />
-    <option name="LAST_COMMIT_MESSAGE" value="before devision" />
+    <MESSAGE value="initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
   </component>
   <component name="WindowStateProjectService">
     <state x="708" y="345" key="#Notifications" timestamp="1621242018003">
@@ -423,10 +423,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="764" y="194" key="RiderGenerateDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1621352181035" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1621939893262">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1621945667564">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1621939893262" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1621945667564" />
+    <state x="747" y="421" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1621945623367">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="747" y="421" key="git4idea.remote.GitConfigureRemotesDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1621945623367" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1621938150788">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
