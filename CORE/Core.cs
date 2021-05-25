@@ -13,16 +13,14 @@ namespace CORE
         public void SwInit()
         {
             string database = ConfigurationManager.AppSettings.Get("material");
-            
-                
-            Console.WriteLine("DB" + database);
+            string temp = ConfigurationManager.AppSettings.Get("template");
             SwAssy swAssy;
             if (swTools.SwConnect() && swTools.SwOpenFile(out swAssy, database))
             {
                 Console.WriteLine("READING DATA...");
                 Console.WriteLine("IT TAKES SOME TIME...");
                 swTools.SwRead(1, 0, 10, swAssy);
-                xl.OpenExcel(swTools);
+                xl.OpenExcel(swTools, temp);
             }
             else
             {

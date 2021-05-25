@@ -23,12 +23,11 @@ namespace XL
 
         //public event Excel.DocEvents_ChangeEventHandler Change;
 
-        public void OpenExcel(SwTools swTools)
+        public void OpenExcel(SwTools swTools, string temp)
         {
             _swTools = swTools;
             _xlApp.Visible = true;
-            _xlBook = _xlApp.Workbooks.Open(
-                @"S:\Programs\Macros\SW TreeManager\SW TreeManager\sw-tree-manager_Template.xlsx");
+            _xlBook = _xlApp.Workbooks.Open(temp);
             _xlSheet = (Excel.Worksheet) _xlBook.Worksheets[1];
             List<string> headings = new List<string>();
             int k = 6;
@@ -43,7 +42,7 @@ namespace XL
             }
             catch
             {
-                Console.WriteLine((k - 6).ToString() + "additional headings");
+                Console.WriteLine((k - 6).ToString() + " additional headings");
             }
             //Console.WriteLine(k);
             //.Cells[1, 1] = "Item No";

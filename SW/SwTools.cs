@@ -9,7 +9,6 @@ namespace SW
     {
         private SldWorks.SldWorks _swApp;
         private SldWorks.AssemblyDoc _swAss;
-        private SldWorks.DrawingDoc _swDrawingDoc;
         private SldWorks.ModelDoc2 _swModel;
 
         public List<Component2> AssList = new List<Component2>();
@@ -20,7 +19,6 @@ namespace SW
         
         //string Database = @"S:\Solidworks Settings 2018\Materials\INGENIUM DIN Materials.sldmat";
         public Dictionary<Tuple<double,SwAssy>, List<SwComps>> MainAss = new Dictionary<Tuple<double,SwAssy>, List<SwComps>>();
-
         public bool SwConnect()
         {
             try
@@ -35,7 +33,6 @@ namespace SW
                 return false;
             }
         }
-
         public bool SwOpenFile(out SwAssy swAssy, string db)
         {
             database = db;
@@ -52,7 +49,6 @@ namespace SW
             swAssy.CompanyNo = _swModel.CustomInfo2[swConf.Name, "Company No"];
             return _swAss != null;
         }
-
         public void SwRead(double l, double p, double d, SwAssy swAssy)
         {
             double level = l;
@@ -94,7 +90,6 @@ namespace SW
             Tuple<double, SwAssy> header = new Tuple<double, SwAssy>(level, assy);//_swModel.GetTitle());
             MainAss.Add(header, Comps);
         }
-
         public void SwWritePart(SwComps comp, string changedText, string colName)//, out bool result)
              {
                  SldWorks.ModelDoc2 swModel = (SldWorks.ModelDoc2) comp.Comp.GetModelDoc2();
@@ -128,7 +123,6 @@ namespace SW
                  swModel.EditRebuild3();
                  _swAss.ForceRebuild2(true);
              }
-
         public void SwWriteAssy(SwAssy comp, string changedText, string colName)
         {
             ModelDoc2 swModel = (ModelDoc2) comp.Comp.GetModelDoc2();
@@ -145,55 +139,6 @@ namespace SW
             }
             swModel.EditRebuild3();
             _swAss.ForceRebuild2(true);
-        }
-
-        public void EasyOpen(string name)
-        {
-            _swDrawingDoc = (SldWorks.DrawingDoc)_swApp.OpenDoc(name, 3);
-            _swModel = (SldWorks.ModelDoc2) _swApp.ActiveDoc;
-        }
-
-        public void AddRevision(List<string> props)
-        {
-            var sheet = (SldWorks.Sheet)_swDrawingDoc.GetCurrentSheet();
-            var revisionTable = (SldWorks.RevisionTableAnnotation) sheet.RevisionTable;
-            revisionTable.AddRevision(props[0]);
-            var table = (TableAnnotation)revisionTable;
-            if (props[1] != "")
-            {
-                table.Text[0, 1] = props[1];
-            }
-            table.Text[0, 2] = props[2];
-            int colCount = table.ColumnCount;
-            for (int i = 3; i < colCount; i++)
-            {
-                if (props[i] == "")
-                {
-                    table.Text[0, i] = table.Text[1, i];
-                }
-                else
-                {
-                    table.Text[0, i] = props[i];
-                }
-            }
-            // table.Text[0, 2] = props[2];
-            // table.Text[0, 3] = table.Text[1, 3];
-            // table.Text[0, 4] = table.Text[1, 4];
-            // table.Text[0, 5] = table.Text[1, 5];
-            // table.Text[0, 6] = table.Text[1, 6];
-        }
-
-        public void SaveToPdf(string n)
-        {
-            _swDrawingDoc.ForceRebuild();
-            var swExportPdfData = (ExportPdfData) _swApp.GetExportFileData(1);
-            _swModel.Extension.SaveAs(n, 0, 1, swExportPdfData, 0, 0);
-        }
-
-        public void CloseDoc(string name)
-        {
-            _swModel.Save();
-            _swApp.CloseDoc(name);
         }
     }
 }
